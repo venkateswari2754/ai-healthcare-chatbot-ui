@@ -1,52 +1,208 @@
-# HealthcareFrontend
+# AI Healthcare Chatbot UI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+A modern, responsive Angular frontend for the AI Healthcare Chatbot, providing an intuitive interface for user authentication and intelligent document-based conversations.
 
-## Development server
+## 🎨 Features
 
-To start a local development server, run:
+- **User Authentication**: Secure login and registration forms
+- **Real-time Chat**: Interactive chat interface with AI responses
+- **Document Q&A**: Ask questions about healthcare documents using RAG
+- **Responsive Design**: Mobile-friendly UI with Angular Material
+- **JWT Integration**: Secure token-based authentication
+- **Loading States**: Smooth user experience with progress indicators
+- **Error Handling**: Comprehensive error messages and validation
 
+## 📋 Table of Contents
+
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Key Components](#key-components)
+- [Styling](#styling)
+- [Testing](#testing)
+- [Building](#building)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
+
+## 🛠 Installation
+
+### Prerequisites
+- Node.js 16+
+- npm or yarn
+- Angular CLI
+
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/venkateswari2754/ai-healthcare-chatbot-ui.git
+   cd ai-healthcare-chatbot-ui
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure environment:
+   Update `src/environments/environment.ts`:
+   ```typescript
+   export const environment = {
+     production: false,
+     apiUrl: 'http://127.0.0.1:8001'  // Backend API URL
+   };
+   ```
+
+## ⚙️ Configuration
+
+### Environment Files
+- `src/environments/environment.ts`: Development configuration
+- `src/environments/environment.prod.ts`: Production configuration
+
+### API Configuration
+Update the API base URL in environment files to match your backend deployment.
+
+## 🚀 Usage
+
+### Development Server
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navigate to `http://localhost:4200` (or your configured port).
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+### Build for Production
 ```bash
-ng generate component component-name
+ng build --prod
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🏗️ Project Structure
 
-```bash
-ng generate --help
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── login/          # Login component
+│   │   ├── register/       # Registration component
+│   │   └── chat/           # Chat interface
+│   ├── services/
+│   │   ├── auth.service.ts # Authentication service
+│   │   └── chat.service.ts # Chat API service
+│   ├── guards/
+│   │   └── auth-guard.ts   # Route protection
+│   ├── interceptors/
+│   │   └── auth-interceptor.ts # HTTP interceptors
+│   └── environments/       # Environment configurations
+├── assets/                 # Static assets
+├── styles.scss            # Global styles
+└── index.html             # Main HTML file
 ```
 
-## Building
+## 🔑 Key Components
 
-To build the project run:
+### Authentication Components
+- **Login Component**: Handles user login with form validation
+- **Register Component**: User registration form
+- **Auth Guard**: Protects routes requiring authentication
 
-```bash
-ng build
-```
+### Chat Components
+- **Chat Interface**: Real-time messaging with AI
+- **Message Display**: Formatted responses with line breaks
+- **Loading Indicators**: User feedback during API calls
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Services
+- **AuthService**: JWT token management and authentication
+- **ChatService**: API communication for chat functionality
 
-## Running unit tests
+## 🎨 Styling
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Design System
+- **Angular Material**: Consistent UI components
+- **Custom SCSS**: Responsive design with gradients and shadows
+- **Typography**: Readable fonts with proper line heights
 
+### Key Styles
+- Gradient backgrounds for visual appeal
+- Card-based layouts for content organization
+- Responsive breakpoints for mobile compatibility
+
+## 🧪 Testing
+
+### Unit Tests
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+### End-to-End Tests
+```bash
+ng e2e
+```
 
-For end-to-end (e2e) testing, run:
+### Test Coverage
+```bash
+ng test --code-coverage
+```
+
+## 🏗️ Building
+
+### Development Build
+```bash
+ng build
+```
+
+### Production Build
+```bash
+ng build --prod --aot
+```
+
+Build artifacts will be stored in the `dist/` directory.
+
+## 🚢 Deployment
+
+### Static Hosting
+Deploy the `dist/` folder to any static hosting service:
+- Netlify
+- Vercel
+- GitHub Pages
+- AWS S3 + CloudFront
+
+### Server-Side Rendering (Optional)
+For better SEO and performance:
+```bash
+ng add @nguniversal/express-engine
+ng build --prod
+ng run healthcare-frontend:server
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make changes and test thoroughly
+4. Commit changes: `git commit -am 'Add feature'`
+5. Push to branch: `git push origin feature-name`
+6. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🔗 Related Projects
+
+- **Backend API**: [ai-healthcare-chatbot-api](https://github.com/venkateswari2754/ai-healthcare-chatbot-api)
+
+## 📞 Support
+
+For questions or issues, please open an issue on GitHub.
+
+## 🔄 Recent Updates
+
+- Enhanced chat UI with proper text formatting
+- Improved authentication flow
+- Added responsive design
+- Integrated with RAG-powered backend
+- Comprehensive error handling
 
 ```bash
 ng e2e
