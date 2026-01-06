@@ -1,0 +1,32 @@
+<div class="register-container">
+   <div class="register-header">
+            <h2>Create an Account</h2>
+            <p>Enter your details to register</p>
+        </div> 
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" formControlName="password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="client_code">Client Code</label>
+      <input id="client_code" type="text" formControlName="client_code" required>
+    </div>
+
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+
+    <button class="btn-submit" type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+    <div class="form-footer">
+    <p>Already have an account? <a routerLink="/login">Login here</a></p>
+    </div>
+  
+</div>

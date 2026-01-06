@@ -1,0 +1,49 @@
+<!-- frontend/src/app/components/chat/chat.html -->
+<div class="chat-container">
+  <mat-card class="chat-card">
+    <mat-card-header>
+      <mat-card-title>Healthcare Support Chat</mat-card-title>
+      <mat-card-subtitle>AI-powered assistance for your healthcare needs</mat-card-subtitle>
+      <button mat-icon-button (click)="logout()" class="logout-btn">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <mat-card-content class="chat-messages">
+      <mat-list class="message-list">
+        <mat-list-item *ngFor="let item of chatHistory" 
+                      [ngClass]="{'user-message': item.type === 'user', 'bot-message': item.type === 'bot'}">
+          <div class="message-content">
+            <div class="message-text" [innerHTML]="item.message"></div>
+            <div class="message-meta" *ngIf="item.intent || item.dataSource">
+              <small *ngIf="item.intent">Intent: {{ item.intent }}</small>
+              <small *ngIf="item.dataSource"> • Source: {{ item.dataSource }}</small>
+            </div>
+          </div>
+        </mat-list-item>
+        
+        <mat-list-item *ngIf="loading" class="loading-message">
+          <mat-spinner diameter="20"></mat-spinner>
+          <span class="loading-text">AI is thinking...</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+
+    <mat-card-actions class="chat-input">
+      <form [formGroup]="chatForm" (ngSubmit)="onSubmit()" class="input-form">
+        <mat-form-field appearance="outline" class="message-input">
+          <mat-label>Type your message...</mat-label>
+          <input matInput 
+                 formControlName="message" 
+                 (keyup.enter)="onSubmit()">
+        </mat-form-field>
+        <button mat-raised-button 
+                color="primary" 
+                type="submit" 
+                [disabled]="chatForm.invalid || loading">
+          <mat-icon>send</mat-icon>
+        </button>
+      </form>
+    </mat-card-actions>
+  </mat-card>
+</div>
